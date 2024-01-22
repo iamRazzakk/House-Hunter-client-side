@@ -2,8 +2,8 @@
 const Header = () => {
     return (
         <div>
-            <div className="carousel w-full rounded md:h-[500px]">
-                <div id="slide1" className="carousel-item relative w-full">
+            <div className="carousel  w-full rounded md:h-[500px]">
+                <div id="slide1" className="carousel-item  relative w-full">
                     <img src="https://c4.wallpaperflare.com/wallpaper/396/394/415/city-apartment-design-wallpaper-preview.jpg" className="w-full object-cover" />
                     <div className="absolute flex justify-between transform -translate-y-1/2 left-5 right-5 top-1/2">
                         <a href="#slide4" className="bg-white text-[#0c0f26] btn-circle btn">❮</a>

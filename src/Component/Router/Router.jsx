@@ -7,6 +7,7 @@ import Main from "../Main/Main";
 import { createBrowserRouter } from 'react-router-dom';
 import Login from "../UserEntryFrom/Login";
 import SingUp from "../UserEntryFrom/SingUp";
+import Photo from "../MorePhoto/Photo";
 
 
 const myCreatedRouter = createBrowserRouter([
@@ -30,6 +31,10 @@ const myCreatedRouter = createBrowserRouter([
                 path: '/contact-us',
                 element: <ContactUS></ContactUS>
             },
+            {
+                path:'more-photo',
+                element:<Photo></Photo>
+            }
 
         ]
     },
