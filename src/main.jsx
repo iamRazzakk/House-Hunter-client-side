@@ -5,8 +5,10 @@ import myCreatedRouter from './Component/Router/Router';
 import { RouterProvider } from 'react-router-dom';
 
 ReactDOM.createRoot(document.getElementById('root')).render(
-  <React.StrictMode>
-    <RouterProvider router={myCreatedRouter}>
-    </RouterProvider>
-  </React.StrictMode>
+  <div className='2xl:max-w-[1536px] xl:max-w-[1280px] lg:max-w-[1024px] md:max-w-[768px] mx-auto font-antonio'>
+    <React.StrictMode>
+      <RouterProvider router={myCreatedRouter}>
+      </RouterProvider>
+    </React.StrictMode>
+  </div>
 )

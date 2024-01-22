@@ -1,4 +1,4 @@
-import { Link, NavLink, useNavigate } from "react-router-dom";
+import { Link, NavLink } from "react-router-dom";
 import logo from '../../assets/logo-3.jpeg'
 
 const Navbar = () => {
@@ -23,7 +23,7 @@ const Navbar = () => {
                         isPending ? "pending" : isActive ? "font-bold text-[#30a2a7]" : "font-normal"
                     }
                 >
-                   Add House
+                    Add House
                 </NavLink>
             </li>
             <li>
@@ -33,7 +33,7 @@ const Navbar = () => {
                         isPending ? "pending" : isActive ? "font-bold text-[#30a2a7]" : "font-normal"
                     }
                 >
-                   About Us
+                    About Us
                 </NavLink>
             </li>
             <li>
@@ -64,7 +64,7 @@ const Navbar = () => {
                         </li>
                     </ul>
                 </div>
-                <img className="w-24 h-10 object-cover " src={logo} alt="" />
+                <Link to='/'><img className="w-24 h-10 object-cover " src={logo} alt="" /></Link>
             </div>
             <div className="navbar-center hidden lg:flex">
                 <ul className=" text-[#3d90e9] menu-horizontal px-1 font-bold">
@@ -79,10 +79,10 @@ const Navbar = () => {
 
                     {/* <p className="md:mr-4">{user?.displayName}</p> */}
                 </div>
-                    <Link to='/login'>
-                        {/* <button className="px-10">Login</button> */}
-                        <button className="px-10 bg-[#3d90e9] py-2  rounded-full md:ml-4">Login</button>
-                    </Link>
+                <Link to='/login'>
+                    {/* <button className="px-10">Login</button> */}
+                    <button className="px-10 bg-[#30a2a7] py-2 text-white rounded-full md:ml-4">Login</button>
+                </Link>
             </div>
 
         </div>
