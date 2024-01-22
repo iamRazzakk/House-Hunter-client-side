@@ -8,6 +8,7 @@ import { createBrowserRouter } from 'react-router-dom';
 import Login from "../UserEntryFrom/Login";
 import SingUp from "../UserEntryFrom/SingUp";
 import Photo from "../MorePhoto/Photo";
+import Dashboard from "../Dashboard/Dashboard";
 
 
 const myCreatedRouter = createBrowserRouter([
@@ -20,10 +21,6 @@ const myCreatedRouter = createBrowserRouter([
                 element: <Home></Home>
             },
             {
-                path: '/add-new-house',
-                element: <AddHouse></AddHouse>
-            },
-            {
                 path: '/about-us',
                 element: <AboutUs></AboutUs>
             },
@@ -32,8 +29,8 @@ const myCreatedRouter = createBrowserRouter([
                 element: <ContactUS></ContactUS>
             },
             {
-                path:'more-photo',
-                element:<Photo></Photo>
+                path: 'more-photo',
+                element: <Photo></Photo>
             }
 
         ]
@@ -45,6 +42,16 @@ const myCreatedRouter = createBrowserRouter([
     {
         path: 'singup',
         element: <SingUp></SingUp>
+    },
+    {
+        path: '/dashboard',
+        element: <Dashboard></Dashboard>,
+        children: [
+            {
+                path: '/dashboard/add-new-house',
+                element: <AddHouse></AddHouse>
+            },
+        ]
     }
 ])
 

@@ -1,10 +1,34 @@
+import axios from "axios";
 import { Link } from "react-router-dom";
 
 
 const Login = () => {
+    const handleLogin = (e) => {
+        e.preventDefault();
+        const form = e.target;
+        const email = form.email.value;
+        const password = form.password.value;
+
+        axios.post('http://localhost:5000/login', {
+            email,
+            password,
+        })
+            .then((response) => {
+                if (response.data.message === 'Login successful') {
+                    // Redirect or show a success message here
+                    console.log('Login successful');
+                } else {
+                    // Handle other response scenarios
+                    console.log('Login failed');
+                }
+            })
+            .catch((error) => {
+                console.error('Error:', error);
+            });
+    };
     return (
         <div className="w-1/2 mx-auto bg-[#0c0f26] p-4 m-4 rounded-lg shadow-lg">
-            <form className="card-body">
+            <form onSubmit={handleLogin} className="card-body">
                 <h1 className="text-4xl font-bold text-center text-white">Login Hear</h1>
                 < div className="form-control" >
                     <label className="label">
