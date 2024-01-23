@@ -23,6 +23,7 @@ const SingUp = () => {
             number: number,
             email: email,
             password: password,
+            status: role === "Owner" ? 'Owner' : 'baratiya'
         }
         axios.post('http://localhost:5000/users', addData, {
             headers: {
@@ -42,7 +43,11 @@ const SingUp = () => {
                                 localStorage.removeItem('access-token')
                             }
                         })
-                    navigate('/dashboard')
+                    if (role === "Renter") {
+                        navigate('/')
+                    } else {
+                        navigate('/dashboard')
+                    }
                 } else {
                     toast.error('Something is Wrong');
                 }
@@ -73,7 +78,7 @@ const SingUp = () => {
                         <label className="abel-text text-white font-bold">Role:</label>
                         <select name="role" className="w-full rounded-md md:py-3 md:mt-3 mx-auto text-black bg-white" id="cars">
                             <option value="Renter" selected>Renter</option>
-                            <option value="House" >Owner</option>
+                            <option value="Owner" >Owner</option>
                         </select>
                     </div>
                     {/* label end */}

@@ -1,11 +1,19 @@
 import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
 import useAxiosSecure from "../Hook/useAxiosSeciour";
+import { useEffect, useState } from "react";
 
 
 const Login = () => {
     const navigate = useNavigate()
     const axiosSecure = useAxiosSecure()
+    const [users, setUser] = useState(null)
+    useEffect(() => {
+        fetch('http://localhost:5000/users')
+            .then(res => res.json())
+            .then(data => setUser(data))
+    }, [])
+    // console.log(user);
     const handleLogin = (e) => {
         e.preventDefault();
         const form = e.target;
@@ -16,27 +24,28 @@ const Login = () => {
             email,
             password,
         })
-            .then((response) => {
-                if (response.data.message === 'Login successful') {
-                    console.log('Login successful');
-                    const user = { email, password }
+            .then((res) => {
+                if (res.data.message === 'Login successful') {
+                    const user = { email, password, role: res.data.role }; // Assuming role is available in res.data
                     axiosSecure.post('/jwt', user)
                         .then(res => {
                             if (res.data.token) {
-                                localStorage.setItem('access-token', res.data.token)
-                            }else{
-                                localStorage.removeItem('access-token')
+                                localStorage.setItem('access-token', res.data.token);
+                            } else {
+                                localStorage.removeItem('access-token');
                             }
-                        })
-                        .then(function (response) {
-                            console.log(response);
                         })
                         .catch(function (error) {
                             console.log(error);
                         });
-                    navigate('/dashboard')
+
+                    if (users.role === "Renter") {
+                        navigate('/');
+                    } else {
+                        navigate('/dashboard');
+                    }
                 } else {
-                    console.log('Login failed:', response.data.message);
+                    console.log('Login failed:', res.data.message);
                 }
             })
             .catch((error) => {

@@ -1,9 +1,28 @@
-import { Link, NavLink } from "react-router-dom";
+import { Link, NavLink, useNavigate } from "react-router-dom";
 import logo from '../../assets/logo-3.jpeg'
+import { useEffect, useState } from "react";
 
 const Navbar = () => {
-    // const navigate = useNavigate()
+    const navigate = useNavigate()
     // console.log(user);
+    const [user, setUser] = useState(null)
+    useEffect(() => {
+        fetch('http://localhost:5000/users')
+            .then(res => res.json())
+            .then(data => setUser(data))
+    }, [])
+    const handleLogout = () => {
+        fetch('http://localhost:5000/logout', {
+            method: 'POST',
+        })
+            .then(() => {
+                setUser(null);
+                navigate('/login')
+            })
+            .catch(error => {
+                console.error('Logout failed:', error.message);
+            });
+    }
     const navLink = <>
         <ul className=" md:flex gap-6 text-white">
             <li>
@@ -79,10 +98,17 @@ const Navbar = () => {
 
                     {/* <p className="md:mr-4">{user?.displayName}</p> */}
                 </div>
-                <Link to='/login'>
-                    {/* <button className="px-10">Login</button> */}
-                    <button className="px-10 bg-[#30a2a7] py-2 text-white rounded-full md:ml-4">Login</button>
-                </Link>
+                {
+                    user ? <>
+                        <Link>
+                            <button onClick={handleLogout} className="px-10 bg-[#30a2a7] py-2 text-white rounded-full md:ml-4">Log out</button>
+                        </Link>
+                    </> :
+                        <> <Link to='/login'>
+                            <button className="px-10 bg-[#30a2a7] py-2 text-white rounded-full md:ml-4">Login</button>
+                        </Link>
+                        </>
+                }
             </div>
 
         </div>
