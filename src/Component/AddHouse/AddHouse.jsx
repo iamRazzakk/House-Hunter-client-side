@@ -1,9 +1,53 @@
-import { Toaster } from "react-hot-toast";
+import axios from "axios";
+import toast, { Toaster } from "react-hot-toast";
 
 const AddHouse = () => {
+    const handleSubmit = e => {
+        e.preventDefault()
+        const form = e.target;
+        const Name = form.Name.value;
+        const address = form.address.value;
+        const city = form.city.value;
+        const bedrooms = form.bedrooms.value;
+        const bathrooms = form.bathrooms.value;
+        const roomsize = form.roomsize.value;
+        const url = form.url.value;
+        const dueDate = form.dueDate.value;
+        const RFM = form.RFM.value;
+        const number = form.number.value;
+        // console.log(Name, address, city, bedrooms, bathrooms, roomsize, url, dueDate, RFM, number);
+        const addData = {
+            Name: Name,
+            address: address,
+            city: city,
+            bedrooms: bedrooms,
+            bathrooms: bathrooms,
+            roomsize: roomsize,
+            url: url,
+            dueDate: dueDate,
+            RFM: RFM,
+            number: number,
+        }
+        axios.post('http://localhost:5000/owner', addData, {
+            headers: {
+                'Content-Type': 'application/json',
+            },
+        })
+            .then(response => {
+                if (response.data.acknowledged) {
+                    toast.success('data added successfully');
+                } else {
+                    toast.error('Something is Wrong');
+                }
+            })
+            .catch(error => {
+                console.error('Error:', error);
+                toast.error('An error occurred while adding the assignment');
+            });
+    }
     return (
         <div className="">
-            <form className="card-body md:ml-10 bg-[#3fb9be] rounded-md text-white">
+            <form onSubmit={handleSubmit} className="card-body md:ml-10 bg-[#3fb9be] rounded-md text-white">
                 <h1 className="text-3xl font-bold text-center text-white md:mb-5">Add Details</h1>
                 <div className="form-control">
                     <div className="flex gap-4">

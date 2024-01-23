@@ -1,8 +1,11 @@
 import axios from "axios";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
+import useAxiosSecure from "../Hook/useAxiosSeciour";
 
 
 const Login = () => {
+    const navigate = useNavigate()
+    const axiosSecure = useAxiosSecure()
     const handleLogin = (e) => {
         e.preventDefault();
         const form = e.target;
@@ -15,11 +18,26 @@ const Login = () => {
         })
             .then((response) => {
                 if (response.data.message === 'Login successful') {
-                    // Redirect or show a success message here
                     console.log('Login successful');
+                    const user = { email, password }
+
+                    axiosSecure.post('/jwt', user)
+                        .then(res => {
+                            if (res.data.token) {
+                                localStorage.setItem('access-token', res.data.token)
+                            }else{
+                                localStorage.removeItem('access-token')
+                            }
+                        })
+                        .then(function (response) {
+                            console.log(response);
+                        })
+                        .catch(function (error) {
+                            console.log(error);
+                        });
+                    navigate('/dashboard')
                 } else {
-                    // Handle other response scenarios
-                    console.log('Login failed');
+                    console.log('Login failed:', response.data.message);
                 }
             })
             .catch((error) => {

@@ -30,7 +30,7 @@ const SingUp = () => {
             .then(response => {
                 if (response.data.acknowledged) {
                     toast.success('Registration successfully');
-                    navigate('/dashboard')
+                    navigate('/login')
                 } else {
                     toast.error('Something is Wrong');
                 }

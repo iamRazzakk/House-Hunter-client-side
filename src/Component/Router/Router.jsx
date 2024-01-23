@@ -9,6 +9,7 @@ import Login from "../UserEntryFrom/Login";
 import SingUp from "../UserEntryFrom/SingUp";
 import Photo from "../MorePhoto/Photo";
 import Dashboard from "../Dashboard/Dashboard";
+import MyProperty from "../Dashboard/MyProperty";
 
 
 const myCreatedRouter = createBrowserRouter([
@@ -50,6 +51,10 @@ const myCreatedRouter = createBrowserRouter([
             {
                 path: '/dashboard/add-new-house',
                 element: <AddHouse></AddHouse>
+            },
+            {
+                path: '/dashboard/property',
+                element: <MyProperty></MyProperty>,
             },
         ]
     }
