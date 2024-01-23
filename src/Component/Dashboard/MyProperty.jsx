@@ -6,7 +6,7 @@ import { useNavigate } from "react-router-dom";
 const MyProperty = () => {
     const axiosSecure = useAxiosSecure()
     const navigate = useNavigate()
-    const { data: apartments, isLoading, isError, error } = useQuery({
+    const { data: apartments, isLoading, isError, error,refetch } = useQuery({
         queryKey: ['owner'],
         queryFn: async () => {
             try {
@@ -36,9 +36,9 @@ const MyProperty = () => {
     }
 
     return (
-        <div>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
             {apartments?.map((Data, index) => (
-                <ProperTable key={Data._id} index={index} Data={Data} />
+                <ProperTable key={Data._id} index={index} refetch={refetch} Data={Data} />
             ))}
         </div>
     );

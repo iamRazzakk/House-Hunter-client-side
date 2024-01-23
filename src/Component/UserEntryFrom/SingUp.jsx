@@ -3,9 +3,11 @@ import Lottie from "lottie-react";
 import loginImg from "../../assets/animation.json";
 import axios from 'axios'
 import toast, { Toaster } from "react-hot-toast";
+import useAxiosSecure from "../Hook/useAxiosSeciour";
 
 const SingUp = () => {
     const navigate = useNavigate()
+    const axiosSecure = useAxiosSecure()
     const handleSubmit = (e) => {
         e.preventDefault()
         const form = e.target
@@ -30,7 +32,17 @@ const SingUp = () => {
             .then(response => {
                 if (response.data.acknowledged) {
                     toast.success('Registration successfully');
-                    navigate('/login')
+                    const user = { email, password }
+
+                    axiosSecure.post('/jwt', user)
+                        .then(res => {
+                            if (res.data.token) {
+                                localStorage.setItem('access-token', res.data.token)
+                            } else {
+                                localStorage.removeItem('access-token')
+                            }
+                        })
+                    navigate('/dashboard')
                 } else {
                     toast.error('Something is Wrong');
                 }

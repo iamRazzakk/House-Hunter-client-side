@@ -10,6 +10,7 @@ import SingUp from "../UserEntryFrom/SingUp";
 import Photo from "../MorePhoto/Photo";
 import Dashboard from "../Dashboard/Dashboard";
 import MyProperty from "../Dashboard/MyProperty";
+import UpdateProperty from "../Dashboard/UpdateProperty";
 
 
 const myCreatedRouter = createBrowserRouter([
@@ -56,6 +57,10 @@ const myCreatedRouter = createBrowserRouter([
                 path: '/dashboard/property',
                 element: <MyProperty></MyProperty>,
             },
+            {
+                path: '/dashboard/owner/:id',
+                element: <UpdateProperty></UpdateProperty>,
+            }
         ]
     }
 ])

@@ -20,7 +20,6 @@ const Login = () => {
                 if (response.data.message === 'Login successful') {
                     console.log('Login successful');
                     const user = { email, password }
-
                     axiosSecure.post('/jwt', user)
                         .then(res => {
                             if (res.data.token) {
