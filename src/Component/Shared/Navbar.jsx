@@ -107,7 +107,10 @@ const Navbar = () => {
                                 </div>
                             </div>
                             <ul tabIndex={0} className="mt-3 z-[1] p-2 shadow menu menu-sm dropdown-content bg-base-100 rounded-box w-52">
-                                <button onClick={handleLogout} className="px-10 bg-[#30a2a7] py-2 text-white rounded-full md:ml-4">Log out</button>
+                                <Link to='/login'>
+                                    <button className="px-10 bg-[#30a2a7] py-2 text-white rounded-full md:ml-4">Login</button>
+                                </Link>
+
                                 <Link to={'/dashboard'}>
                                     <button className="px-10 mt-2 bg-[#30a2a7] py-2 text-white rounded-full md:ml-4">Dashboard</button>
                                 </Link>
@@ -117,7 +120,7 @@ const Navbar = () => {
 
                     </> :
                         <> <Link to='/login'>
-                            <button className="px-10 bg-[#30a2a7] py-2 text-white rounded-full md:ml-4">Login</button>
+                            <button onClick={handleLogout} className="px-10 bg-[#30a2a7] py-2 text-white rounded-full md:ml-4">Log out</button>
                         </Link>
                         </>
                 }
