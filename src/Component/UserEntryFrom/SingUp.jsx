@@ -61,7 +61,7 @@ const SingUp = () => {
     }
     return (
         <div className="md:flex md:p-6">
-            <div className="flex-1 md:p-4 md:mt-14">
+            <div className="flex-1 flex-col-reverse md:p-4 md:mt-14">
                 <Lottie className='md:h-[450px] ' animationData={loginImg} loop={true} />
             </div>
             <div className="w-1/2 mx-auto bg-[#0c0f26] md:p-4 m-4 rounded-lg shadow-lg">

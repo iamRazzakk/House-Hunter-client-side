@@ -35,7 +35,7 @@ const Navbar = () => {
                     Home
                 </NavLink>
             </li>
-            <li>
+            {/* <li>
                 <NavLink
                     to="/add-new-house"
                     className={({ isActive, isPending }) =>
@@ -44,7 +44,7 @@ const Navbar = () => {
                 >
                     Add House
                 </NavLink>
-            </li>
+            </li> */}
             <li>
                 <NavLink
                     to="/about-us"
@@ -100,9 +100,21 @@ const Navbar = () => {
                 </div>
                 {
                     user ? <>
-                        <Link>
-                            <button onClick={handleLogout} className="px-10 bg-[#30a2a7] py-2 text-white rounded-full md:ml-4">Log out</button>
-                        </Link>
+                        <div className="dropdown dropdown-end">
+                            <div tabIndex={0} role="button" className="btn btn-ghost btn-circle avatar">
+                                <div className="w-10 rounded-full">
+                                    <img alt="Tailwind CSS Navbar component" src="https://daisyui.com/images/stock/photo-1534528741775-53994a69daeb.jpg" />
+                                </div>
+                            </div>
+                            <ul tabIndex={0} className="mt-3 z-[1] p-2 shadow menu menu-sm dropdown-content bg-base-100 rounded-box w-52">
+                                <button onClick={handleLogout} className="px-10 bg-[#30a2a7] py-2 text-white rounded-full md:ml-4">Log out</button>
+                                <Link to={'/dashboard'}>
+                                    <button className="px-10 mt-2 bg-[#30a2a7] py-2 text-white rounded-full md:ml-4">Dashboard</button>
+                                </Link>
+                            </ul>
+                        </div>
+
+
                     </> :
                         <> <Link to='/login'>
                             <button className="px-10 bg-[#30a2a7] py-2 text-white rounded-full md:ml-4">Login</button>

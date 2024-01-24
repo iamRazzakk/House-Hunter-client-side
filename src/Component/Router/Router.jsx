@@ -11,12 +11,14 @@ import Photo from "../MorePhoto/Photo";
 import Dashboard from "../Dashboard/Dashboard";
 import MyProperty from "../Dashboard/MyProperty";
 import UpdateProperty from "../Dashboard/UpdateProperty";
+import Error from "../Error/Error";
 
 
 const myCreatedRouter = createBrowserRouter([
     {
         path: '/',
         element: <Main></Main>,
+        errorElement: <Error></Error>,
         children: [
             {
                 path: '/',
