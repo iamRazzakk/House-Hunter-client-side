@@ -11,4 +11,4 @@ console.log(isPalindrome("A man, a plan, a canal: Panama"));
 // false
 // true
 
-Check out the [server-side code]([link-to-your-code-file](https://github.com/iamRazzakk/House-Hunter-Server-side)) for more details.
+server side code link: https://github.com/iamRazzakk/House-Hunter-Server-side
