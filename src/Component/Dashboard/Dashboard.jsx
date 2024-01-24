@@ -6,7 +6,7 @@ import { useEffect, useState } from "react";
 const Dashboard = () => {
     const [users, setUser] = useState(null)
     useEffect(() => {
-        fetch('http://localhost:5000/users')
+        fetch('https://y-orcin-omega.vercel.app/users')
             .then(res => res.json())
             .then(data => setUser(data))
     }, [])

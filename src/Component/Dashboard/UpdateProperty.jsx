@@ -9,7 +9,7 @@ const UpdateProperty = () => {
         queryKey: ['owner'],
         queryFn: async () => {
             try {
-                const res = await fetch(`http://localhost:5000/owner`);
+                const res = await fetch(`https://y-orcin-omega.vercel.app/owner`);
                 if (!res.ok) {
                     throw new Error(`Error fetching data: ${res.statusText}`);
                 }

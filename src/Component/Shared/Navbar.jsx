@@ -7,12 +7,12 @@ const Navbar = () => {
     // console.log(user);
     const [user, setUser] = useState(null)
     useEffect(() => {
-        fetch('http://localhost:5000/users')
+        fetch('https://y-orcin-omega.vercel.app/users')
             .then(res => res.json())
             .then(data => setUser(data))
     }, [])
     const handleLogout = () => {
-        fetch('http://localhost:5000/logout', {
+        fetch('https://y-orcin-omega.vercel.app/logout', {
             method: 'POST',
         })
             .then(() => {

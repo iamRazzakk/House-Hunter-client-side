@@ -28,7 +28,7 @@ const AddHouse = () => {
             RFM: RFM,
             number: number,
         }
-        axios.post('http://localhost:5000/owner', addData, {
+        axios.post('https://y-orcin-omega.vercel.app/owner', addData, {
             headers: {
                 'Content-Type': 'application/json',
             },

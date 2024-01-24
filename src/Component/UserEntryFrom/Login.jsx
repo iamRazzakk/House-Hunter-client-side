@@ -9,7 +9,7 @@ const Login = () => {
     const axiosSecure = useAxiosSecure()
     const [users, setUser] = useState(null)
     useEffect(() => {
-        fetch('http://localhost:5000/users')
+        fetch('https://y-orcin-omega.vercel.app/users')
             .then(res => res.json())
             .then(data => setUser(data))
     }, [])
@@ -20,7 +20,7 @@ const Login = () => {
         const email = form.email.value;
         const password = form.password.value;
 
-        axios.post('http://localhost:5000/login', {
+        axios.post('https://y-orcin-omega.vercel.app/login', {
             email,
             password,
         })

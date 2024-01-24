@@ -25,7 +25,7 @@ const SingUp = () => {
             password: password,
             status: role === "Owner" ? 'Owner' : 'baratiya'
         }
-        axios.post('http://localhost:5000/users', addData, {
+        axios.post('https://y-orcin-omega.vercel.app/users', addData, {
             headers: {
                 'Content-Type': 'application/json',
             },
